@@ -1,0 +1,48 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="RateV4Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Package">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:short" name="ZipOrigination"/>
+              <xs:element type="xs:short" name="ZipDestination"/>
+              <xs:element type="xs:byte" name="Pounds"/>
+              <xs:element type="xs:byte" name="Ounces"/>
+              <xs:element type="xs:string" name="Container"/>
+              <xs:element type="xs:byte" name="Zone"/>
+              <xs:element name="Postage">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="MailService"/>
+                    <xs:element type="xs:float" name="Rate"/>
+                    <xs:element name="SpecialServices">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SpecialService" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:short" name="ServiceID"/>
+                                <xs:element type="xs:string" name="ServiceName"/>
+                                <xs:element type="xs:string" name="Available"/>
+                                <xs:element type="xs:float" name="Price"/>
+                                <xs:element type="xs:string" name="DeclaredValueRequired" minOccurs="0"/>
+                                <xs:element type="xs:string" name="DueSenderRequired" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:byte" name="CLASSID"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="ID"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
